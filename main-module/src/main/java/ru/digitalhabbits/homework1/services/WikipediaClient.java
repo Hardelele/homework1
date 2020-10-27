@@ -1,5 +1,7 @@
 package ru.digitalhabbits.homework1.services;
 
+import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonObject;
 import org.apache.http.client.utils.URIBuilder;
 
 import javax.annotation.Nonnull;
@@ -17,7 +19,10 @@ public class WikipediaClient {
         final URI uri = prepareSearchUrl(searchString);
         HttpRequest request = prepareHttpRequest(uri);
         HttpResponse<String> response = sendRequestAndReturnJsonString(request);
-        return response.body();
+        return new JsonObject(response.body())
+                .getJsonObject("query")
+                .getJsonObject("pages")
+                .toString();
     }
 
     @Nonnull
