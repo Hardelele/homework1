@@ -1,10 +1,13 @@
-package ru.digitalhabbits.homework1.service;
+package ru.digitalhabbits.homework1.services;
 
 import org.apache.http.client.utils.URIBuilder;
 
 import javax.annotation.Nonnull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class WikipediaClient {
     public static final String WIKIPEDIA_SEARCH_URL = "https://en.wikipedia.org/w/api.php";
@@ -12,8 +15,26 @@ public class WikipediaClient {
     @Nonnull
     public String search(@Nonnull String searchString) {
         final URI uri = prepareSearchUrl(searchString);
-        // TODO: NotImplemented
-        return "";
+        HttpRequest request = prepareHttpRequest(uri);
+        HttpResponse<String> response = sendRequestAndReturnJsonString(request);
+        return response.body();
+    }
+
+    @Nonnull
+    private HttpResponse<String> sendRequestAndReturnJsonString(@Nonnull HttpRequest request) {
+        HttpClient client = HttpClient.newHttpClient();
+        try {
+            return client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
+    @Nonnull
+    private HttpRequest prepareHttpRequest(@Nonnull URI uri) {
+        return HttpRequest.newBuilder()
+                .uri(uri)
+                .build();
     }
 
     @Nonnull
