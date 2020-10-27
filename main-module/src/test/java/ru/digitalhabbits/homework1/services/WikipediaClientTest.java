@@ -1,4 +1,4 @@
-package ru.digitalhabbits.homework1.service;
+package ru.digitalhabbits.homework1.services;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.params.ParameterizedTest;

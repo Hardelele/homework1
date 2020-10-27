@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import java.util.Scanner;
 
 public class Homework {
+
     public static void main(String[] args) {
         new WikipediaSearchEngine().search(getSearchString(args));
     }

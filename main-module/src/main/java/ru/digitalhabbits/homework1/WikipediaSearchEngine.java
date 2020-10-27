@@ -2,10 +2,10 @@ package ru.digitalhabbits.homework1;
 
 import org.slf4j.Logger;
 import ru.digitalhabbits.homework1.plugin.PluginInterface;
-import ru.digitalhabbits.homework1.service.FileEngine;
-import ru.digitalhabbits.homework1.service.PluginEngine;
-import ru.digitalhabbits.homework1.service.PluginLoader;
-import ru.digitalhabbits.homework1.service.WikipediaClient;
+import ru.digitalhabbits.homework1.services.FileEngine;
+import ru.digitalhabbits.homework1.services.PluginEngine;
+import ru.digitalhabbits.homework1.services.PluginLoader;
+import ru.digitalhabbits.homework1.services.WikipediaClient;
 
 import javax.annotation.Nonnull;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ru.digitalhabbits.homework1.service;
+package ru.digitalhabbits.homework1.services;
 
 import org.slf4j.Logger;
 import ru.digitalhabbits.homework1.plugin.PluginInterface;
