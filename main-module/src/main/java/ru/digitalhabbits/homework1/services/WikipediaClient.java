@@ -19,10 +19,27 @@ public class WikipediaClient {
         final URI uri = prepareSearchUrl(searchString);
         HttpRequest request = prepareHttpRequest(uri);
         HttpResponse<String> response = sendRequestAndReturnJsonString(request);
-        return new JsonObject(response.body())
+        return extractContent(
+                extractPageJson(response)
+        );
+    }
+
+    @Nonnull
+    private String extractContent(@Nonnull JsonObject page) {
+        return page.getValue("extract").toString();
+    }
+
+    @Nonnull
+    private JsonObject extractPageJson(@Nonnull HttpResponse<String> response) {
+        JsonObject pagesJson = new JsonObject(response.body())
                 .getJsonObject("query")
-                .getJsonObject("pages")
-                .toString();
+                .getJsonObject("pages");
+        String randomKey = pagesJson
+                .getMap()
+                .keySet().stream()
+                .findFirst()
+                .orElseThrow();
+        return pagesJson.getJsonObject(randomKey);
     }
 
     @Nonnull
