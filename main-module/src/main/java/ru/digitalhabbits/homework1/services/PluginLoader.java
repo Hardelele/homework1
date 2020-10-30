@@ -52,11 +52,11 @@ public class PluginLoader {
                     .replaceAll("/", ".")
                     .replace(".class", "");
             try {
-                Class loadClass = urlClassLoader.loadClass(formattedClassName);
-                Class<?>[] interfaces = loadClass.getInterfaces();
+                Class loadedClass = urlClassLoader.loadClass(formattedClassName);
+                Class<?>[] interfaces = loadedClass.getInterfaces();
                 for (Class<?> i : interfaces) {
                     if (i.equals(PluginInterface.class)) {
-                        pluginsList.add(loadClass);
+                        pluginsList.add(loadedClass);
                         break;
                     }
                 }
