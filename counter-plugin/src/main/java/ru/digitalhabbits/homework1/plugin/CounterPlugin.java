@@ -20,7 +20,7 @@ public class CounterPlugin
     private int countWords(String text) {
         Matcher matcher = Pattern.compile("(\\b[a-zA-Z][a-zA-Z.0-9-]*\\b)").matcher(text);
         int counter = 0;
-        while(matcher.find()){
+        while(matcher.find()) {
             counter++;
         }
         return counter;
