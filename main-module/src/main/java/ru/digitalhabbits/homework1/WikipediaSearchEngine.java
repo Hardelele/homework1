@@ -21,7 +21,6 @@ public class WikipediaSearchEngine {
         logger.info("Searching '{}' on wikipedia", searchString);
 
         // 1. сделать запрос в wikipedia, получить результат в формате json.
-        //TODO:: Добавить regex на замену \\n на \n
         final WikipediaClient client = new WikipediaClient();
         final String text = client.search(searchString);
 
