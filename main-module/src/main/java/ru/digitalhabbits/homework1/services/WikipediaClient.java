@@ -26,7 +26,7 @@ public class WikipediaClient {
 
     @Nonnull
     private String extractContent(@Nonnull JsonObject page) {
-        return page.getValue("extract").toString().replaceAll("\\\\n", "\n");
+        return page.getValue("extract").toString().replaceAll("\\\\n", "\n").toLowerCase();
     }
 
     @Nonnull
