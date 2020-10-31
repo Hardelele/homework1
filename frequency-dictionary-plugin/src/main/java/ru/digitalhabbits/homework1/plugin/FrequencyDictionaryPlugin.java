@@ -12,6 +12,7 @@ public class FrequencyDictionaryPlugin
     @Nullable
     @Override
     public String apply(@Nonnull String text) {
+        text = text.replaceAll("\\\\n", "\n").toLowerCase().trim();
         Map<String, Integer> wordToFrequencyMap = buildWordToFrequencyMap(text);
         StringBuilder result = new StringBuilder();
         wordToFrequencyMap.entrySet().stream()
